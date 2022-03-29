@@ -18,7 +18,7 @@ public class BlogController {
     }
 
     @RequestMapping("/")
-    public String listPost(ModelMap modelMap) {
+    public String listPosts(ModelMap modelMap) {
         List<Post> posts = postRepository.getAllPosts();
         modelMap.put("posts", posts);
         return "home";
@@ -26,7 +26,7 @@ public class BlogController {
 
     @RequestMapping("/post/{id}")
     public String postDetails(@PathVariable Long id, ModelMap modelMap) {
-        Post post = PostRepository.findById(id);
+        Post post = postRepository.findById(id);
         modelMap.put("post", post);
         return "post-details";
     }
